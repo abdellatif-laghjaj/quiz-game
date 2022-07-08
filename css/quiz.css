@@ -7,7 +7,7 @@
 }
 
 :root {
-    --light-purple-color: #8854c0;
+    --light-purple-color: #61c054;
     --light-color: #fff;
     --dark-color: #000;
     --grey-color: #f2f2f2;
@@ -86,7 +86,7 @@ body {
     border: 3px solid var(--light-purple-color);
     background-color: var(--light-purple-color);
     color: var(--light-color);
-    box-shadow: 0 4px 0 0 #6c4298;
+    box-shadow: 0 4px 0 0 #569842;
     transition: var(--transition);
 }
 
@@ -120,6 +120,7 @@ body {
     margin: 0 auto 0 auto;
     text-transform: uppercase;
     cursor: pointer;
+    width: 100%;
     display: block;
     background-color: var(--grey-color);
     color: var(--dark-color);

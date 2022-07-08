@@ -20,7 +20,8 @@ let correctAnswer = "", correctScore = askedCount = 0, totalQuestion = 10;
 
 // load question from API
 async function loadQuestion(){
-    const APIUrl = 'https://opentdb.com/api.php?amount=1';
+    const settings = loadSettings();
+    const APIUrl = 'https://opentdb.com/api.php?amount=' + settings.limit + '&category=' + settings.category + '&difficulty=' + settings.difficulty;
     const result = await fetch(`${APIUrl}`)
     const data = await result.json();
     _result.innerHTML = "";
@@ -51,7 +52,7 @@ function showQuestion(data){
     // console.log(correctAnswer);
 
     
-    _question.innerHTML = `${data.question} <br> <span class = "category"> ${data.category} </span>`;
+    _question.innerHTML = `${data.question} <br> <span class="category"> ${data.category} </span>`;
     _options.innerHTML = `
         ${optionsList.map((option, index) => `
             <li> ${index + 1}. <span>${option}</span> </li>
