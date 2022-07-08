@@ -1,0 +1,310 @@
+{
+    "quiz": {
+        "sport": {
+            "q1": {
+                "question": "Which one is correct team name in NBA?",
+                "options": [
+                    "New York Bulls",
+                    "Los Angeles Kings",
+                    "Golden State Warriros",
+                    "Huston Rocket"
+                ],
+                "answer": "Huston Rocket"
+            },
+            "q2": {
+                "question": "Which one is correct team name in cricket?",
+                "options": [
+                    "New York Bulls",
+                    "Los Angeles Kings",
+                    "Golden State Warriros",
+                    "Huston Rocket"
+                ],
+                "answer": "Huston Rocket"
+            },
+            "q3": {
+                "question": "Which one is correct team name in football?",
+                "options": [
+                    "New York Bulls",
+                    "Los Angeles Kings",
+                    "Golden State Warriros",
+                    "Huston Rocket"
+                ],
+                "answer": "Huston Rocket"
+            },
+            "q4": {
+                "question": "Which one is correct team name in hockey?",
+                "options": [
+                    "New York Bulls",
+                    "Los Angeles Kings",
+                    "Golden State Warriros",
+                    "Huston Rocket"
+                ],
+                "answer": "Huston Rocket"
+            },
+            "q5": {
+                "question": "Which one is correct team name in tennis?",
+                "options": [
+                    "New York Bulls",
+                    "Los Angeles Kings",
+                    "Golden State Warriros",
+                    "Huston Rocket"
+                ],
+                "answer": "Huston Rocket"
+            },
+            "q6": {
+                "question": "Which one is correct team name in volleyball?",
+                "options": [
+                    "New York Bulls",
+                    "Los Angeles Kings",
+                    "Golden State Warriros",
+                    "Huston Rocket"
+                ],
+                "answer": "Huston Rocket"
+            },
+            "q7": {
+                "question": "Which one is correct team name in badminton?",
+                "options": [
+                    "New York Bulls",
+                    "Los Angeles Kings",
+                    "Golden State Warriros",
+                    "Huston Rocket"
+                ],
+                "answer": "Huston Rocket"
+            },
+            "q8": {
+                "question": "Which one is correct team name in table tennis?",
+                "options": [
+                    "New York Bulls",
+                    "Los Angeles Kings",
+                    "Golden State Warriros",
+                    "Huston Rocket"
+                ],
+                "answer": "Huston Rocket"
+            },
+            "q9": {
+                "question": "Which one is correct team name in badminton?",
+                "options": [
+                    "New York Bulls",
+                    "Los Angeles Kings",
+                    "Golden State Warriros",
+                    "Huston Rocket"
+                ],
+                "answer": "Huston Rocket"
+            },
+            "q10": {
+                "question": "Which one is correct team name in table tennis?",
+                "options": [
+                    "New York Bulls",
+                    "Los Angeles Kings",
+                    "Golden State Warriros",
+                    "Huston Rocket"
+                ],
+                "answer": "Huston Rocket"
+            }
+        },
+        "maths": {
+            "q1": {
+                "question": "5 + 7 = ?",
+                "options": [
+                    "10",
+                    "11",
+                    "12",
+                    "13"
+                ],
+                "answer": "12"
+            },
+            "q2": {
+                "question": "12 - 8 = ?",
+                "options": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "answer": "4"
+            },
+            "q3": {
+                "question": "10 x 2 = ?",
+                "options": [
+                    "20",
+                    "21",
+                    "22",
+                    "23"
+                ],
+                "answer": "20"
+            },
+            "q4": {
+                "question": "24 / 4 = ?",
+                "options": [
+                    "6",
+                    "7",
+                    "8",
+                    "9"
+                ],
+                "answer": "6"
+            },
+            "q5": {
+                "question": "25 / 5 = ?",
+                "options": [
+                    "5",
+                    "6",
+                    "7",
+                    "8"
+                ],
+                "answer": "5"
+            },
+            "q6": {
+                "question": "30 / 3 = ?",
+                "options": [
+                    "10",
+                    "11",
+                    "12",
+                    "13"
+                ],
+                "answer": "10"
+            },
+            "q7": {
+                "question": "40 / 2 = ?",
+                "options": [
+                    "20",
+                    "21",
+                    "22",
+                    "23"
+                ],
+                "answer": "20"
+            },
+            "q8": {
+                "question": "50 / 5 = ?",
+                "options": [
+                    "10",
+                    "11",
+                    "12",
+                    "13"
+                ],
+                "answer": "10"
+            },
+            "q9": {
+                "question": "60 / 6 = ?",
+                "options": [
+                    "10",
+                    "11",
+                    "12",
+                    "13"
+                ],
+                "answer": "10"
+            },
+            "q10": {
+                "question": "70 / 7 = ?",
+                "options": [
+                    "10",
+                    "11",
+                    "12",
+                    "13"
+                ],
+                "answer": "10"
+            }
+        },
+        "science": {
+            "q1": {
+                "question": "Nearest earth to sun is ?",
+                "options": [
+                    "Mercury",
+                    "Venus",
+                    "Mars",
+                    "Jupiter"
+                ],
+                "answer": "Mars"
+            },
+            "q2": {
+                "question": "Nearest star to sun is ?",
+                "options": [
+                    "Alpha Centauri",
+                    "Proxima Centauri",
+                    "Barnard's Star",
+                    "Wolf 359"
+                ],
+                "answer": "Alpha Centauri"
+            },
+            "q3": {
+                "question": "Nearest star to earth is ?",
+                "options": [
+                    "Alpha Centauri",
+                    "Proxima Centauri",
+                    "Barnard's Star",
+                    "Wolf 359"
+                ],
+                "answer": "Proxima Centauri"
+            },
+            "q4": {
+                "question": "Nearest star to moon is ?",
+                "options": [
+                    "Alpha Centauri",
+                    "Proxima Centauri",
+                    "Barnard's Star",
+                    "Wolf 359"
+                ],
+                "answer": "Alpha Centauri"
+            },
+            "q5": {
+                "question": "Nearest star to sun is ?",
+                "options": [
+                    "Alpha Centauri",
+                    "Proxima Centauri",
+                    "Barnard's Star",
+                    "Wolf 359"
+                ],
+                "answer": "Alpha Centauri"
+            },
+            "q6": {
+                "question": "Nearest star to sun is ?",
+                "options": [
+                    "Alpha Centauri",
+                    "Proxima Centauri",
+                    "Barnard's Star",
+                    "Wolf 359"
+                ],
+                "answer": "Alpha Centauri"
+            },
+            "q7": {
+                "question": "Nearest star to sun is ?",
+                "options": [
+                    "Alpha Centauri",
+                    "Proxima Centauri",
+                    "Barnard's Star",
+                    "Wolf 359"
+                ],
+                "answer": "Alpha Centauri"
+            },
+            "q8": {
+                "question": "Nearest star to sun is ?",
+                "options": [
+                    "Alpha Centauri",
+                    "Proxima Centauri",
+                    "Barnard's Star",
+                    "Wolf 359"
+                ],
+                "answer": "Alpha Centauri"
+            },
+            "q9": {
+                "question": "Nearest star to sun is ?",
+                "options": [
+                    "Alpha Centauri",
+                    "Proxima Centauri",
+                    "Barnard's Star",
+                    "Wolf 359"
+                ],
+                "answer": "Alpha Centauri"
+            },
+            "q10": {
+                "question": "Nearest star to sun is ?",
+                "options": [
+                    "Alpha Centauri",
+                    "Proxima Centauri",
+                    "Barnard's Star",
+                    "Wolf 359"
+                ],
+                "answer": "Alpha Centauri"
+            }
+        }
+    }
+}

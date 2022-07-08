@@ -1,0 +1,16 @@
+:root{
+    --correct-color: #bfffbf;
+    --wrong-color: #ff8585;
+}
+
+.quiz-wrapper .answers-wrapper label{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px 0;
+    padding-left: 6px;
+    border-radius: 10px;
+    border: 1px solid;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
