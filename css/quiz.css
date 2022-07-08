@@ -27,8 +27,12 @@
     transition: background 0.3s ease-in-out;
 }
 
+.option.selected{
+    background: var(--correct-color);
+}
+
 .option:hover{
-    background: rgba( 255, 255, 255, 0.15 );
+    opacity: 0.8;
 }
 
 .quiz-wrapper button{

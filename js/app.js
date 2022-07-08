@@ -72,7 +72,18 @@ function showQuestions(data) {
 function selectOption() {
     _options.querySelectorAll('.option').forEach(option => {
         option.addEventListener('click', () => {
-            alert(option.innerHTML);
+            //add class selected to selected option
+            let current = option.textContent;
+            option.classList.add('bg-yellow-300');
+            option.classList.add('text-white');
+
+            //remove class selected from other options
+            _options.querySelectorAll('.option').forEach(option => {
+                if (option.textContent !== current) {
+                    option.classList.remove('bg-yellow-300');
+                    option.classList.remove('text-white');
+                }
+            });
         });
     });
 }
