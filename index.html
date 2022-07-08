@@ -30,18 +30,26 @@
     <div class="container flex flex-col items-center justify-center p-10">
         <header>
             <h1 class="text-center text-4xl font-bold">Quiz Game</h1>
-            <p class="text-center text-xl py-2">Choose a category and difficulty level to start the game!</p>
+            <p class="text-center py-2">Choose a category and difficulty level to start the game!</p>
         </header>
-        <div class="settings-container">
+        <div class="divider">SETUP</div>
+        <div class="settings-container w-full flex justify-center flex-col items-center mt-3">
             <select class="select select-primary w-full max-w-xs py-2">
                 <option disabled selected>Select a category</option>
-                <option>Game of Thrones</option>
-                <option>Lost</option>
-                <option>Breaking Bad</option>
-                <option>Walking Dead</option>
+                <option value="1">Category 1</option>
+                <option value="2">Category 2</option>
+                <option value="3">Category 3</option>
             </select>
 
-            <div class="diffeculty py-2">
+            <select class="select select-primary w-full max-w-xs py-2 mt-4">
+                <option disabled selected>Select number of questions</option>
+                <option>5</option>
+                <option>10</option>
+                <option>15</option>
+                <option>20</option>
+            </select>
+
+            <div class="difficulty py-2">
                 <label class="radio-label">
                     <input type="radio" name="difficulty" class="radio radio-primary" id="easy" value="easy">
                     <span class="radio-custom"></span>

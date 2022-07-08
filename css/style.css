@@ -27,13 +27,39 @@ body{
     border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
+.settings-container{
+    width: 100%;
+}
+
 .settings-container select{
     min-width: 100%;
     max-width: 100%;
 }
 
-.container .start-btn{
-    min-width: 100%;
-    max-width: 100%;
+.settings-container .difficulty{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 10px 0;
+    gap: 10px;
+}
+
+.difficulty label{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.container .difficulty label:hover{
+    background: rgba( 255, 255, 255, 0.25 );
+}
+
+.settings-container button{
     width: 100%;
 }
