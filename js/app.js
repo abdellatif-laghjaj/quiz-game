@@ -7,6 +7,7 @@ const next_btn = document.querySelector('.next-btn');
 
 const _question_index = document.querySelector('.question-index');
 const _question_total = document.querySelector('.total-questions');
+const _score_container = document.getElementById('score');
 
 const _question_category = document.getElementById('question-category');
 const _question = document.getElementById('question-title');
@@ -19,6 +20,7 @@ let difficulty = '';
 var duration = 15;
 var current_time = duration;
 var is_stop = false;
+var score = 0;
 
 let correct_answer = '';
 let correct_score = 0;
@@ -97,7 +99,6 @@ function selectOption() {
                 option.classList.add('bg-red-500');
                 option.classList.add('text-white');
                 next_btn.addEventListener('click', () => {
-                    is_stop = true;
                     answerWrong();
                 });
             }
@@ -112,7 +113,9 @@ function answerCorrect(){
     setTimer(duration);
     correct_score++;
     asked_count++;
+    score++;
     _question_index.innerHTML = `${asked_count + 1}`;
+    _score_container.innerHTML = `${score}`;
     if (asked_count < total_questions) {
         _options.innerHTML = '';
         loadQuestions();
@@ -129,6 +132,7 @@ function answerWrong(){
     setTimer(duration);
     asked_count++;
     _question_index.innerHTML = `${asked_count + 1}`;
+    _options.innerHTML = '';
     if (asked_count < total_questions) {
         _options.innerHTML = '';
         loadQuestions();
