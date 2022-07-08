@@ -1,66 +1,49 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="draclula">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/quiz.css">
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.18.1/dist/full.css" rel="stylesheet" type="text/css" />
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet" type="text/css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="icon" href="res/favicon.png" type="image/x-icon" />
-    <title>Quiz Game | Abdellatif Laghjaj</title>
+    <title>Quiz Game - API Project</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+        integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="css/quiz.css">
+        <link href="https://cdn.jsdelivr.net/npm/daisyui@2.18.1/dist/full.css" rel="stylesheet" type="text/css" />
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet" type="text/css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
 </head>
 
-<body>
-    <!-- Main Content -->
-    <div class="quiz-container flex flex-col items-center justify-center p-10">
-        <!-- Quiz Game -->
-        <div class="quiz-wrapper">
-            <header>
-                <div class="badge badge-primary py-4 px-4 mb-4" id="question-category">Category</div>
-                <div class="tags flex justify-between items-center">
-                    <div class="tag border border-gray-300 rounded-full px-3 py-1">
-                        <span class="font-mono text-xl quiz-index">
-                            <span class="question-index"></span>/<span class="total-questions"></span>
-                        </span>
-                    </div>
-                    <div>
-                        <span id="score" class="font-mono text-3xl">
-                            0
-                        </span>
-                    </div>
-                    <div class="timer border border-gray-300 rounded-full px-3 py-1">
-                        <span class="countdown font-mono text-2xl">
-                            <span></span>
-                            s
-                        </span>
-                    </div>
-
+<body class="flex">
+    <div class="wrapper">
+        <div class="quiz-container">
+            <div class="quiz-head">
+                <div class="quiz-score flex">
+                    <span id="correct-score"></span>/<span id="total-question"></span>
                 </div>
-                <h2 class="text-xl my-4" id="question-title">What is the capital of France?</h2>
-            </header>
-            
-            <div class="divider">OPTIONS</div>
-
-            <div class="answers-wrapper flex justify-start flex-col" id="question-options">
-                <!-- <div class="option flex justify-start items-center my-2">
-                    <span class="ml-2">
-                        Option 1
-                    </span>
-                </div> -->
             </div>
-            <div class="flex justify-center items-center w-full min-w-full max-w-full mt-2">
-                <button class="btn btn-primary next-btn">
-                    Next
-                </button>
+            <div class="quiz-body">
+                <h2 class="quiz-question" id="question">
+                    <!--What is the full form of HTTP? -->
+                </h2>
+                <ul class="quiz-options">
+                    <!-- <li>1. Hyper text transfer package</li>
+                    <li>2. Hyper text transfer protocol</li>
+                    <li>3. Hyphenation text test program</li>
+                    <li>4. None of the above</li> -->
+                </ul>
+                <div id="result">
+                </div>
+            </div>
+            <div class="quiz-foot">
+                <button type="button" id="check-answer">Check Answer</button>
+                <button type="button" id="play-again">Play Again!</button>
             </div>
         </div>
     </div>
 
-    <!-- JS -->
     <script src="js/app.js"></script>
 </body>
 </html>

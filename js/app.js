@@ -3,143 +3,134 @@ const quiz_category = document.querySelector('.quiz-category');
 const quiz_limit = document.querySelector('.quiz-limit');
 const quiz_difficulty = document.getElementsByName('difficulty');
 const start_quiz_btn = document.querySelector('.start-btn');
-const next_btn = document.querySelector('.next-btn');
 
-const _question_index = document.querySelector('.question-index');
-const _question_total = document.querySelector('.total-questions');
-const _score_container = document.getElementById('score');
-
-const _question_category = document.getElementById('question-category');
-const _question = document.getElementById('question-title');
-const _options = document.getElementById('question-options');
+const _question = document.getElementById('question');
+const _options = document.querySelector('.quiz-options');
+const _checkBtn = document.getElementById('check-answer');
+const _playAgainBtn = document.getElementById('play-again');
+const _result = document.getElementById('result');
+const _correctScore = document.getElementById('correct-score');
+const _totalQuestion = document.getElementById('total-question');
 
 let category = '';
 let limit = '';
 let difficulty = '';
 
-var duration = 15;
-var current_time = duration;
-var is_stop = false;
-var score = 0;
+let correctAnswer = "", correctScore = askedCount = 0, totalQuestion = 10;
 
-let correct_answer = '';
-let correct_score = 0;
-let asked_count = 0;
-let total_questions = loadSettings().limit;
+// load question from API
+async function loadQuestion(){
+    const APIUrl = 'https://opentdb.com/api.php?amount=1';
+    const result = await fetch(`${APIUrl}`)
+    const data = await result.json();
+    _result.innerHTML = "";
+    showQuestion(data.results[0]);
+}
 
-document.addEventListener('DOMContentLoaded', () => {
-    is_stop = false;
-    loadQuestions();
-    setTimer(duration);
-    _question_index.innerHTML = `${asked_count + 1}`;
-    _question_total.innerHTML = `${total_questions}`;
+// event listeners
+function eventListeners(){
+    _checkBtn.addEventListener('click', checkAnswer);
+    _playAgainBtn.addEventListener('click', restartQuiz);
+}
+
+document.addEventListener('DOMContentLoaded', function(){
+    loadQuestion();
+    eventListeners();
+    _totalQuestion.textContent = totalQuestion;
+    _correctScore.textContent = correctScore;
 });
 
-//API URL
-const API_URL = 'https://opentdb.com/api.php?';
 
+// display question and options
+function showQuestion(data){
+    _checkBtn.disabled = false;
+    correctAnswer = data.correct_answer;
+    let incorrectAnswer = data.incorrect_answers;
+    let optionsList = incorrectAnswer;
+    optionsList.splice(Math.floor(Math.random() * (incorrectAnswer.length + 1)), 0, correctAnswer);
+    // console.log(correctAnswer);
 
-//load qustions from api
-async function loadQuestions() {
-    const settings = loadSettings();
-    const result = await fetch(`${API_URL}amount=${settings.limit}&category=${settings.category}&difficulty=${settings.difficulty}`);
-    const data = await result.json();
-    // console.log(data.results[0]);
-    showQuestions(data.results[correct_score]);
-}
-
-//function to show questions
-function showQuestions(data) {
-    const question = data.question;
-    const answers = data.incorrect_answers;
-    correct_answer = data.correct_answer;
-    const question_category = data.category;
-
-    const options_list = [correct_answer, ...answers];
-    _question_category.innerHTML = question_category;
-    _question.innerHTML = question;
-    _options.innerHTML += `
-        ${options_list.map((option, index) => {
-            return `
-                <div class="option flex justify-start items-center my-2">
-                    ${index + 1}- 
-                    <span class="ml-2">
-                        ${option}
-                    </span>
-                </div>
-                `;
-        }).join('')}
+    
+    _question.innerHTML = `${data.question} <br> <span class = "category"> ${data.category} </span>`;
+    _options.innerHTML = `
+        ${optionsList.map((option, index) => `
+            <li> ${index + 1}. <span>${option}</span> </li>
+        `).join('')}
     `;
-
     selectOption();
-    next_btn.style.display = 'none';
 }
 
 
-//function to select option
-function selectOption() {
-    _options.querySelectorAll('.option').forEach(option => {
-        option.addEventListener('click', () => {
-            const selected_option = option.querySelector('span').textContent.trim();
-            next_btn.style.display = 'block';
-            is_stop = true;
-            
-            //disable all options
-            _options.querySelectorAll('.option').forEach(option => {
-                option.style.pointerEvents = 'none';
-            });
-
-            if (selected_option === correct_answer) {
-                option.classList.add('bg-green-500');
-                option.classList.add('text-white');
-                next_btn.addEventListener('click', () => {
-                    answerCorrect();
-                });
-            } else {
-                option.classList.add('bg-red-500');
-                option.classList.add('text-white');
-                next_btn.addEventListener('click', () => {
-                    answerWrong();
-                });
+// options selection
+function selectOption(){
+    _options.querySelectorAll('li').forEach(function(option){
+        option.addEventListener('click', function(){
+            if(_options.querySelector('.selected')){
+                const activeOption = _options.querySelector('.selected');
+                activeOption.classList.remove('selected');
             }
+            option.classList.add('selected');
         });
     });
 }
 
-//fucntion to check if answer is correct
-function answerCorrect(){
-    is_stop = false;
-    resetTimer();
-    setTimer(duration);
-    correct_score++;
-    asked_count++;
-    score++;
-    _question_index.innerHTML = `${asked_count + 1}`;
-    _score_container.innerHTML = `${score}`;
-    if (asked_count < total_questions) {
-        _options.innerHTML = '';
-        loadQuestions();
-        resetTimer();
+// answer checking
+function checkAnswer(){
+    _checkBtn.disabled = true;
+    if(_options.querySelector('.selected')){
+        let selectedAnswer = _options.querySelector('.selected span').textContent;
+        if(selectedAnswer == HTMLDecode(correctAnswer)){
+            correctScore++;
+            _result.innerHTML = `<p><i class = "fas fa-check"></i>Correct Answer!</p>`;
+        } else {
+            _result.innerHTML = `<p><i class = "fas fa-times"></i>Incorrect Answer!</p> <small><b>Correct Answer: </b>${correctAnswer}</small>`;
+        }
+        checkCount();
     } else {
-        showResult();
+        _result.innerHTML = `<p><i class = "fas fa-question"></i>Please select an option!</p>`;
+        _checkBtn.disabled = false;
     }
 }
 
-//function to check if answer is wrong
-function answerWrong(){
-    is_stop = false;
-    resetTimer();
-    setTimer(duration);
-    asked_count++;
-    _question_index.innerHTML = `${asked_count + 1}`;
-    _options.innerHTML = '';
-    if (asked_count < total_questions) {
-        _options.innerHTML = '';
-        loadQuestions();
-        resetTimer();
+// to convert html entities into normal text of correct answer if there is any
+function HTMLDecode(textString) {
+    let doc = new DOMParser().parseFromString(textString, "text/html");
+    return doc.documentElement.textContent;
+}
+
+
+function checkCount(){
+    askedCount++;
+    setCount();
+    if(askedCount == totalQuestion){
+        setTimeout(function(){
+            console.log("");
+        }, 5000);
+
+
+        _result.innerHTML += `<p>Your score is ${correctScore}.</p>`;
+        _playAgainBtn.style.display = "block";
+        _checkBtn.style.display = "none";
     } else {
-        showResult();
+        setTimeout(function(){
+            loadQuestion();
+        }, 300);
     }
+}
+
+function setCount(){
+    _totalQuestion.textContent = totalQuestion;
+    _correctScore.textContent = correctScore;
+}
+
+
+function restartQuiz(){
+    correctScore = askedCount = 0;
+    _playAgainBtn.style.display = "none";
+    _checkBtn.style.display = "block";
+    _checkBtn.disabled = false;
+    setCount();
+    loadQuestion();
 }
 
 if(start_quiz_btn !== null) {
@@ -173,38 +164,11 @@ function setUpSettings() {
     difficulty = getDifficulty();
 }
 
-//timer countdown
-function setTimer(current_time){
-    setInterval(function(){
-        $('.countdown span').css('--value', current_time);
-        if(current_time > 0 && !is_stop) current_time--;
-        if(current_time < -1){
-            // showResult();
-            setTimeout(() => {
-                window.location.href = 'quiz.html';
-            }, 300);
-            resetTimer();
-        }
-    }, 1000);
-}
-
-//reset timer
-function resetTimer() {
-    duration = 15;
-    current_time = duration;
-}
-
 //save settings to local storage
 function saveSettings() {
-    if (localStorage.getItem('category') === null) {
-        localStorage.setItem('category', category);
-    }
-    if (localStorage.getItem('limit') === null) {
-        localStorage.setItem('limit', limit);
-    }
-    if (localStorage.getItem('difficulty') === null) {
-        localStorage.setItem('difficulty', difficulty);
-    }
+    localStorage.setItem('category', category);
+    localStorage.setItem('limit', limit);
+    localStorage.setItem('difficulty', difficulty);
 }
 
 //load settings from local storage
