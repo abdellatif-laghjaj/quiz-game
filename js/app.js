@@ -1,3 +1,4 @@
+const setup_wrapper = document.querySelector('.setup-wrapper');
 const quiz_category = document.querySelector('.quiz-category');
 const quiz_limit = document.querySelector('.quiz-limit');
 const quiz_difficulty = document.getElementsByName('difficulty');
@@ -12,7 +13,7 @@ start_quiz_btn.addEventListener('click', (e) => {
     if (category === 'Select Category' || limit === 'Select number of questions' || difficulty === '') {
         alert('Please select all the fields');
     } else {
-        alert('Quiz will start');
+        $('.setup-wrapper').hide();
     }
 });
 
