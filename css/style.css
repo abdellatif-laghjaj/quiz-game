@@ -18,7 +18,7 @@ body{
 .container{
     min-width: 400px;
     max-width: 600px;
-    margin: 0 300px;
+    margin: 0 440px;
     background: rgba( 255, 255, 255, 0.25 );
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
     backdrop-filter: blur( 4px );
@@ -29,6 +29,7 @@ body{
 
 .settings-container{
     width: 100%;
+    user-select: none;
 }
 
 .settings-container select{
@@ -46,14 +47,18 @@ body{
 
 .difficulty label{
     display: flex;
-    justify-content: space-evenly;
     align-items: center;
     width: 100%;
     padding: 10px 0;
+    padding-left: 6px;
     border-radius: 10px;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    border: 1px solid;
     cursor: pointer;
     transition: background 0.3s ease-in-out;
+}
+
+.difficulty label input{
+    margin-right: 4px;
 }
 
 .container .difficulty label:hover{

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="winter">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,21 +27,21 @@
     </div>
 
     <!-- Main Content -->
-    <div class="container flex flex-col items-center justify-center p-10">
+    <div class="container  flex flex-col items-center justify-center p-10">
         <header>
             <h1 class="text-center text-4xl font-bold">Quiz Game</h1>
             <p class="text-center py-2">Choose a category and difficulty level to start the game!</p>
         </header>
         <div class="divider">SETUP</div>
         <div class="settings-container w-full flex justify-center flex-col items-center mt-3">
-            <select class="select select-primary w-full max-w-xs py-2">
+            <select class="select select-primary w-full max-w-xs py-2 quiz-category">
                 <option disabled selected>Select a category</option>
                 <option value="1">Category 1</option>
                 <option value="2">Category 2</option>
                 <option value="3">Category 3</option>
             </select>
 
-            <select class="select select-primary w-full max-w-xs py-2 mt-4">
+            <select class="select select-primary w-full max-w-xs py-2 mt-4 quiz-limit">
                 <option disabled selected>Select number of questions</option>
                 <option>5</option>
                 <option>10</option>
