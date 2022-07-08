@@ -33,18 +33,20 @@
     </div>
 
     <!-- Main Content -->
-    <div class="container flex flex-col items-center justify-center p-10">
+    <div class="quiz-container flex flex-col items-center justify-center p-10">
         <!-- Quiz Game -->
         <div class="quiz-wrapper">
             <header>
                 <div class="badge badge-primary py-4 px-4 mb-2" id="question-category">Category</div>
                 <div class="tags flex justify-between items-center">
-                    <div>
-                        <span class="font-mono text-2xl score">
-                            Score: 10
+                    <div class="tag border border-gray-300 rounded-full px-3 py-1">
+                        <span class="font-mono text-xl quiz-index">
+                            <span class="question-current-index">1</span>
+                            /
+                            <span class="question-total-index">10</span>
                         </span>
                     </div>
-                    <div class="timer">
+                    <div class="timer border border-gray-300 rounded-full px-3 py-1">
                         <span class="countdown font-mono text-2xl">
                             <span></span>
                             s

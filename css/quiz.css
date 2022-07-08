@@ -3,6 +3,13 @@
     --wrong-color: #ff8585;
 }
 
+.quiz-container{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+
 .quiz-wrapper .answers-wrapper .option{
     display: flex;
     align-items: center;
@@ -17,4 +24,8 @@
 
 .option:hover{
     background: rgba( 255, 255, 255, 0.15 );
+}
+
+.quiz-wrapper button{
+    width: 100%;
 }

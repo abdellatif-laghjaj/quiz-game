@@ -32,13 +32,12 @@ function showQuestions(data) {
     const question = data.question;
     const answers = data.incorrect_answers;
     const correct_answer = data.correct_answer;
-    const question_type = data.type;
     const question_category = data.category;
 
-    const options_data = [correct_answer, ...answers];
+    const options_list = [correct_answer, ...answers];
     _question_category.innerHTML = question_category;
     _question.innerHTML = question;
-    options_data.forEach(function (option) {
+    options_list.forEach(function (option) {
         _options.innerHTML += `
                 <div class="option flex justify-start items-center my-2">
                     <span class="ml-2">
