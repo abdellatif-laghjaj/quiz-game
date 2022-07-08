@@ -33,33 +33,41 @@
     </div>
 
     <!-- Main Content -->
-    <div class="container  flex flex-col items-center justify-center p-10">
+    <div class="container flex flex-col items-center justify-center p-10">
         <!-- Quiz Game -->
         <div class="quiz-wrapper">
             <header>
+                <div class="badge badge-primary py-4 px-4 mb-2" id="question-category">Category</div>
                 <div class="tags flex justify-between items-center">
-                    <div class="badge badge-primary py-4 px-4" id="question-category">Category</div>
+                    <div>
+                        <span class="font-mono text-2xl score">
+                            Score: 10
+                        </span>
+                    </div>
                     <div class="timer">
                         <span class="countdown font-mono text-2xl">
                             <span></span>
                             s
                         </span>
                     </div>
+
                 </div>
                 <h2 class="text-xl my-4" id="question-title">What is the capital of France?</h2>
             </header>
             
             <div class="divider">ANSWERS</div>
 
-            <div class="answers-wrapper flex justify-start flex-col">
+            <div class="answers-wrapper flex justify-start flex-col" id="question-options">
                 <!-- <div class="option flex justify-start items-center my-2">
                     <span class="ml-2">
                         Option 1
                     </span>
                 </div> -->
             </div>
-            <div class="flex justify-end items-center mt-2">
-                <button class="btn btn-primary next-btn">Next</button>
+            <div class="flex justify-center items-center w-full min-w-full max-w-full mt-2">
+                <button class="btn btn-primary check-btn">
+                    Check Answer
+                </button>
             </div>
         </div>
     </div>
