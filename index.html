@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="forest">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,8 +10,59 @@
     <title>Quiz Game | Abdellatif Laghjaj</title>
 </head>
 <body>
-    
-    
+    <!-- Startup Modal -->
+    <div class="startup-modal">
+        <!-- The button to open modal -->
+        <a href="#my-modal-2" class="btn">open modal</a>
+        <!-- Put this part before </body> tag -->
+        <div class="modal" id="my-modal-2">
+        <div class="modal-box">
+            <h3 class="font-bold text-lg">Congratulations random Internet user!</h3>
+            <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
+            <div class="modal-action">
+            <a href="#" class="btn">Yay!</a>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <header>
+            <h1 class="text-center text-4xl font-bold">Quiz Game</h1>
+            <p>Choose a category and difficulty level to start the game!</p>
+        </header>
+        <div class="settings-container">
+            <select class="select select-primary w-full max-w-xs">
+                <option disabled selected>Select a category</option>
+                <option>Game of Thrones</option>
+                <option>Lost</option>
+                <option>Breaking Bad</option>
+                <option>Walking Dead</option>
+            </select>
+
+            <div class="diffeculty">
+                <label class="radio-label">
+                    <input type="radio" name="difficulty" class="radio radio-primary" id="easy" value="easy">
+                    <span class="radio-custom"></span>
+                    Easy
+                </label>
+
+                <label class="radio-label">
+                    <input type="radio" name="difficulty" class="radio radio-primary" id="medium" value="medium">
+                    <span class="radio-custom"></span>
+                    Medium
+                </label>
+
+                <label class="radio-label">
+                    <input type="radio" name="difficulty" class="radio radio-primary" id="hard" value="hard">
+                    <span class="radio-custom"></span>
+                    Hard
+                </label>
+            </div>
+        </div>
+    </div>
+
     <!-- JS -->
     <script src="js/app.js"></script>
 </body>
