@@ -3,6 +3,7 @@ const quiz_category = document.querySelector('.quiz-category');
 const quiz_limit = document.querySelector('.quiz-limit');
 const quiz_difficulty = document.getElementsByName('difficulty');
 const start_quiz_btn = document.querySelector('.start-btn');
+const next_btn = document.querySelector('.next-btn');
 
 const _question_index = document.querySelector('.question-index');
 const _question_total = document.querySelector('.total-questions');
@@ -15,7 +16,9 @@ let category = '';
 let limit = '';
 let difficulty = '';
 
-var duration = 3;
+var duration = 15;
+var current_time = duration;
+var is_stop = false;
 
 let correct_answer = '';
 let correct_score = 0;
@@ -23,6 +26,7 @@ let asked_count = 0;
 let total_questions = loadSettings().limit;
 
 document.addEventListener('DOMContentLoaded', () => {
+    is_stop = false;
     loadQuestions();
     setTimer(duration);
     _question_index.innerHTML = `${asked_count + 1}`;
@@ -39,7 +43,7 @@ async function loadQuestions() {
     const result = await fetch(`${API_URL}amount=${settings.limit}&category=${settings.category}&difficulty=${settings.difficulty}`);
     const data = await result.json();
     // console.log(data.results[0]);
-    showQuestions(data.results[0]);
+    showQuestions(data.results[correct_score]);
 }
 
 //function to show questions
@@ -56,8 +60,9 @@ function showQuestions(data) {
         ${options_list.map((option, index) => {
             return `
                 <div class="option flex justify-start items-center my-2">
+                    ${index + 1}- 
                     <span class="ml-2">
-                        ${index + 1}- ${option}
+                        ${option}
                     </span>
                 </div>
                 `;
@@ -65,6 +70,7 @@ function showQuestions(data) {
     `;
 
     selectOption();
+    next_btn.style.display = 'none';
 }
 
 
@@ -72,20 +78,64 @@ function showQuestions(data) {
 function selectOption() {
     _options.querySelectorAll('.option').forEach(option => {
         option.addEventListener('click', () => {
-            //add class selected to selected option
-            let current = option.textContent;
-            option.classList.add('bg-yellow-300');
-            option.classList.add('text-white');
-
-            //remove class selected from other options
+            const selected_option = option.querySelector('span').textContent.trim();
+            next_btn.style.display = 'block';
+            is_stop = true;
+            
+            //disable all options
             _options.querySelectorAll('.option').forEach(option => {
-                if (option.textContent !== current) {
-                    option.classList.remove('bg-yellow-300');
-                    option.classList.remove('text-white');
-                }
+                option.style.pointerEvents = 'none';
             });
+
+            if (selected_option === correct_answer) {
+                option.classList.add('bg-green-500');
+                option.classList.add('text-white');
+                next_btn.addEventListener('click', () => {
+                    answerCorrect();
+                });
+            } else {
+                option.classList.add('bg-red-500');
+                option.classList.add('text-white');
+                next_btn.addEventListener('click', () => {
+                    is_stop = true;
+                    answerWrong();
+                });
+            }
         });
     });
+}
+
+//fucntion to check if answer is correct
+function answerCorrect(){
+    is_stop = false;
+    resetTimer();
+    setTimer(duration);
+    correct_score++;
+    asked_count++;
+    _question_index.innerHTML = `${asked_count + 1}`;
+    if (asked_count < total_questions) {
+        _options.innerHTML = '';
+        loadQuestions();
+        resetTimer();
+    } else {
+        showResult();
+    }
+}
+
+//function to check if answer is wrong
+function answerWrong(){
+    is_stop = false;
+    resetTimer();
+    setTimer(duration);
+    asked_count++;
+    _question_index.innerHTML = `${asked_count + 1}`;
+    if (asked_count < total_questions) {
+        _options.innerHTML = '';
+        loadQuestions();
+        resetTimer();
+    } else {
+        showResult();
+    }
 }
 
 if(start_quiz_btn !== null) {
@@ -120,15 +170,24 @@ function setUpSettings() {
 }
 
 //timer countdown
-function setTimer(time){
+function setTimer(current_time){
     setInterval(function(){
-        $('.countdown span').css('--value', time);
-        time--;
-        if(time < -1){
-            // alert('Time up');
-            time = duration;
+        $('.countdown span').css('--value', current_time);
+        if(current_time > 0 && !is_stop) current_time--;
+        if(current_time < -1){
+            // showResult();
+            setTimeout(() => {
+                window.location.href = 'quiz.html';
+            }, 300);
+            resetTimer();
         }
     }, 1000);
+}
+
+//reset timer
+function resetTimer() {
+    duration = 15;
+    current_time = duration;
 }
 
 //save settings to local storage
