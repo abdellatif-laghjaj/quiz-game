@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dracula">
+<html lang="en" data-theme="lemonade">
 
 <head>
     <meta charset="UTF-8">
@@ -15,29 +15,12 @@
 </head>
 
 <body>
-    <!-- Startup Modal -->
-    <div class="startup-modal hidden">
-        <!-- The button to open modal -->
-        <a href="#my-modal-2" class="btn">open modal</a>
-        <!-- Put this part before </body> tag -->
-        <div class="modal" id="my-modal-2">
-            <div class="modal-box">
-                <h3 class="font-bold text-lg">Congratulations random Internet user!</h3>
-                <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for
-                    free!</p>
-                <div class="modal-action">
-                    <a href="#" class="btn">Yay!</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Main Content -->
     <div class="quiz-container flex flex-col items-center justify-center p-10">
         <!-- Quiz Game -->
         <div class="quiz-wrapper">
             <header>
-                <div class="badge badge-primary py-4 px-4 mb-2" id="question-category">Category</div>
+                <div class="badge badge-primary py-4 px-4 mb-4" id="question-category">Category</div>
                 <div class="tags flex justify-between items-center">
                     <div class="tag border border-gray-300 rounded-full px-3 py-1">
                         <span class="font-mono text-xl quiz-index">
@@ -57,7 +40,7 @@
                 <h2 class="text-xl my-4" id="question-title">What is the capital of France?</h2>
             </header>
             
-            <div class="divider">ANSWERS</div>
+            <div class="divider">OPTIONS</div>
 
             <div class="answers-wrapper flex justify-start flex-col" id="question-options">
                 <!-- <div class="option flex justify-start items-center my-2">

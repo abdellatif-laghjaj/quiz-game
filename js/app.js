@@ -37,14 +37,17 @@ function showQuestions(data) {
     const options_list = [correct_answer, ...answers];
     _question_category.innerHTML = question_category;
     _question.innerHTML = question;
-    options_list.forEach(function (option) {
-        _options.innerHTML += `
+    _options.innerHTML += `
+        ${options_list.map((option, index) => {
+            return `
                 <div class="option flex justify-start items-center my-2">
                     <span class="ml-2">
-                        ${option}
+                        ${index + 1}- ${option}
                     </span>
-                </div>`;
-    });
+                </div>
+                `;
+        }).join('')}
+    `;
 }
 
 loadQuestions();
