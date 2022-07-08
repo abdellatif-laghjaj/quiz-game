@@ -3,7 +3,7 @@
     --wrong-color: #ff8585;
 }
 
-.quiz-wrapper .answers-wrapper label{
+.quiz-wrapper .answers-wrapper .option{
     display: flex;
     align-items: center;
     width: 100%;
@@ -13,4 +13,8 @@
     border: 1px solid;
     cursor: pointer;
     transition: background 0.3s ease-in-out;
+}
+
+.option:hover{
+    background: rgba( 255, 255, 255, 0.15 );
 }
