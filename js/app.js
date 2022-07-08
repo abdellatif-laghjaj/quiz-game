@@ -12,7 +12,7 @@ start_quiz_btn.addEventListener('click', (e) => {
     if (category === 'Select Category' || limit === 'Select number of questions' || difficulty === '') {
         alert('Please select all the fields');
     } else {
-        console.log(category, limit, difficulty);
+        alert('Quiz will start');
     }
 });
 
