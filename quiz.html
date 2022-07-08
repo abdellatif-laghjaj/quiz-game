@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dracula">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/quiz.css">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.18.1/dist/full.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="icon" href="res/favicon.png" type="image/x-icon" />
+    <title>Quiz Game | Abdellatif Laghjaj</title>
+</head>
+
+<body>
+    <!-- Startup Modal -->
+    <div class="startup-modal hidden">
+        <!-- The button to open modal -->
+        <a href="#my-modal-2" class="btn">open modal</a>
+        <!-- Put this part before </body> tag -->
+        <div class="modal" id="my-modal-2">
+            <div class="modal-box">
+                <h3 class="font-bold text-lg">Congratulations random Internet user!</h3>
+                <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for
+                    free!</p>
+                <div class="modal-action">
+                    <a href="#" class="btn">Yay!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container  flex flex-col items-center justify-center p-10">
+        <!-- Quiz Game -->
+        <div class="quiz-wrapper">
+            <header>
+                <div class="tags flex justify-between items-center">
+                    <div class="badge badge-primary py-4 px-4" id="question-category">Category</div>
+                    <div class="timer">
+                        <span class="countdown font-mono text-2xl">
+                            <span></span>
+                            s
+                        </span>
+                    </div>
+                </div>
+                <h2 class="text-xl my-4" id="question-title">What is the capital of France?</h2>
+            </header>
+            
+            <div class="divider">ANSWERS</div>
+
+            <div class="answers-wrapper flex justify-start flex-col">
+                <!-- <div class="option flex justify-start items-center my-2">
+                    <span class="ml-2">
+                        Option 1
+                    </span>
+                </div> -->
+            </div>
+            <div class="flex justify-end items-center mt-2">
+                <button class="btn btn-primary next-btn">Next</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="js/app.js"></script>
+</body>
+</html>
