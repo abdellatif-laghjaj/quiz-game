@@ -4,6 +4,9 @@ const quiz_limit = document.querySelector('.quiz-limit');
 const quiz_difficulty = document.getElementsByName('difficulty');
 const start_quiz_btn = document.querySelector('.start-btn');
 
+const _question_index = document.querySelector('.question-index');
+const _question_total = document.querySelector('.total-questions');
+
 const _question_category = document.getElementById('question-category');
 const _question = document.getElementById('question-title');
 const _options = document.getElementById('question-options');
@@ -12,7 +15,19 @@ let category = '';
 let limit = '';
 let difficulty = '';
 
-const questions = [];
+var duration = 3;
+
+let correct_answer = '';
+let correct_score = 0;
+let asked_count = 0;
+let total_questions = loadSettings().limit;
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadQuestions();
+    setTimer(duration);
+    _question_index.innerHTML = `${asked_count + 1}`;
+    _question_total.innerHTML = `${total_questions}`;
+});
 
 //API URL
 const API_URL = 'https://opentdb.com/api.php?';
@@ -21,17 +36,17 @@ const API_URL = 'https://opentdb.com/api.php?';
 //load qustions from api
 async function loadQuestions() {
     const settings = loadSettings();
-    // https://opentdb.com/api.php?amount=10&category=11&difficulty=easy
     const result = await fetch(`${API_URL}amount=${settings.limit}&category=${settings.category}&difficulty=${settings.difficulty}`);
     const data = await result.json();
     // console.log(data.results[0]);
     showQuestions(data.results[0]);
 }
+
 //function to show questions
 function showQuestions(data) {
     const question = data.question;
     const answers = data.incorrect_answers;
-    const correct_answer = data.correct_answer;
+    correct_answer = data.correct_answer;
     const question_category = data.category;
 
     const options_list = [correct_answer, ...answers];
@@ -48,12 +63,19 @@ function showQuestions(data) {
                 `;
         }).join('')}
     `;
+
+    selectOption();
 }
 
-loadQuestions();
 
-//start timer
-setTimer(30);
+//function to select option
+function selectOption() {
+    _options.querySelectorAll('.option').forEach(option => {
+        option.addEventListener('click', () => {
+            alert(option.innerHTML);
+        });
+    });
+}
 
 if(start_quiz_btn !== null) {
     start_quiz_btn.addEventListener('click', (e) => {
@@ -87,14 +109,14 @@ function setUpSettings() {
 }
 
 //timer countdown
-function setTimer(duration){
+function setTimer(time){
     setInterval(function(){
-        $('.countdown span').css('--value', duration);
-        duration--;
-        // if(duration < 0){
-        //     $('.quiz-wrapper').hide();
-        //     // $('.result-wrapper').show();
-        // }
+        $('.countdown span').css('--value', time);
+        time--;
+        if(time < -1){
+            // alert('Time up');
+            time = duration;
+        }
     }, 1000);
 }
 
