@@ -115,7 +115,7 @@ function checkCount(){
     } else {
         setTimeout(function(){
             loadQuestion();
-        }, 300);
+        }, 1000);
     }
 }
 
@@ -131,7 +131,7 @@ function restartQuiz(){
     _checkBtn.style.display = "block";
     _checkBtn.disabled = false;
     setCount();
-    loadQuestion();
+    window.location.href = "index.html";
 }
 
 if(start_quiz_btn !== null) {
